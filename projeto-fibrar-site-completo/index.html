@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário de Treinos - Projeto Fibrar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      padding: 1rem;
+    }
+    .day {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .day:hover {
+      background-color: #e3f2fd;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+      max-width: 90%;
+      text-align: center;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    .close-btn {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      max-width: 300px;
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Calendário de Treinos - Projeto Fibrar</h1>
+  </header>
+  <div class="calendar">
+    <div class="day" onclick="showPopup('21 Jul - Corpo Inteiro', 'Flexões, agachamentos, pranchas', 'imagens/corpo.gif')">21 Julho</div>
+    <div class="day" onclick="showPopup('22 Jul - HIIT Iniciante', 'Corrida no lugar, jumping jacks, burpees adaptados', 'imagens/hiit.gif')">22 Julho</div>
+    <div class="day" onclick="showPopup('23 Jul - Força Parque', 'Step-ups, flexões elevadas, prancha lateral', 'imagens/stepup.gif')">23 Julho</div>
+    <div class="day" onclick="showPopup('24 Jul - Caminhada + Alongamento', 'Caminhada 30min + alongamentos', 'imagens/alongamento.gif')">24 Julho</div>
+    <div class="day" onclick="showPopup('25 Jul - Respiração + Nutrição', 'Foco alimentar e respiração 4-7-8', 'imagens/respiracao.gif')">25 Julho</div>
+    <div class="day" onclick="showPopup('26 Jul - Mobilidade + Caminhada', 'Alongamento articular leve + caminhada', 'imagens/alongamento.gif')">26 Julho</div>
+    <div class="day" onclick="showPopup('27 Jul - Respiração + Diário', 'Reflexão + vitórias do dia', 'imagens/respiracao.gif')">27 Julho</div>
+    <div class="day" onclick="showPopup('28 Jul - Treino + Medidas', 'Treino funcional + registo de medidas e fotos', 'imagens/corpo.gif')">28 Julho</div>
+    <div class="day" onclick="showPopup('29 Jul - Alongamento leve', 'Mobilidade ao acordar ou à noite', 'imagens/alongamento.gif')">29 Julho</div>
+    <div class="day" onclick="showPopup('30 Jul - Caminhada Leve', '20-30 min de caminhada descontraída', 'imagens/caminhada.gif')">30 Julho</div>
+    <div class="day" onclick="showPopup('31 Jul - Alongamento + hidratação', 'Alongar e manter bom consumo de água', 'imagens/alongamento.gif')">31 Julho</div>
+    <div class="day" onclick="showPopup('01 Ago - Off físico', 'Foco em boa alimentação e descanso', 'imagens/respiracao.gif')">1 Agosto</div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <h2 id="popup-title"></h2>
+    <p id="popup-text"></p>
+    <img id="popup-img" src="" alt="Imagem do treino" />
+    <br /><br />
+    <button class="close-btn" onclick="closePopup()">Fechar</button>
+  </div>
+
+  <script>
+    function showPopup(title, text, imgUrl) {
+      document.getElementById('popup-title').innerText = title;
+      document.getElementById('popup-text').innerText = text;
+      document.getElementById('popup-img').src = imgUrl;
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('popup').style.display = 'block';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
